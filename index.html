@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cute Lamp Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: #1e1f2f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+/* Lamp Section */
+.lamp-container {
+    position: relative;
+    text-align: center;
+}
+
+.lamp {
+    width: 120px;
+    height: 140px;
+    background: #ff9eb5;
+    border-radius: 60px 60px 20px 20px;
+    margin: auto;
+    position: relative;
+    transition: 0.5s;
+}
+
+.stand {
+    width: 10px;
+    height: 100px;
+    background: #ccc;
+    margin: auto;
+}
+
+.base {
+    width: 60px;
+    height: 15px;
+    background: #aaa;
+    border-radius: 20px;
+    margin: auto;
+}
+
+/* Rope */
+.rope {
+    width: 4px;
+    height: 60px;
+    background: white;
+    margin: auto;
+    cursor: pointer;
+    position: relative;
+}
+
+.rope::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -5px;
+    left: -3px;
+}
+
+/* Glow Effect */
+.light-on {
+    box-shadow: 0 0 80px 30px rgba(255, 200, 150, 0.7);
+}
+
+/* Login Card */
+.login-card {
+    position: absolute;
+    top: 50%;
+    left: 200%;
+    transform: translate(-50%, -50%);
+    background: #2b2d42;
+    padding: 40px;
+    width: 300px;
+    border-radius: 20px;
+    text-align: center;
+    opacity: 0;
+    transition: 0.6s ease;
+}
+
+.login-card.active {
+    left: 50%;
+    opacity: 1;
+}
+
+.login-card h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    background: #3a3d5c;
+    color: white;
+}
+
+.login-card button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #ff4d6d;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-card button:hover {
+    background: #e63950;
+}
+
+</style>
+</head>
+<body>
+
+<div class="lamp-container">
+    
+    <div class="rope" onclick="turnOn()"></div>
+    
+    <div class="lamp" id="lamp"></div>
+    <div class="stand"></div>
+    <div class="base"></div>
+
+    <div class="login-card" id="loginCard">
+        <h2>Welcome Back</h2>
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button>Login</button>
+    </div>
+
+</div>
+
+<script>
+
+let isOn = false;
+
+function turnOn() {
+    const lamp = document.getElementById("lamp");
+    const card = document.getElementById("loginCard");
+
+    if (!isOn) {
+        lamp.classList.add("light-on");
+        card.classList.add("active");
+        isOn = true;
+    } else {
+        lamp.classList.remove("light-on");
+        card.classList.remove("active");
+        isOn = false;
+    }
+}
+
+</script>
+
+</body>
+</html>
